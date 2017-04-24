@@ -1,4 +1,52 @@
 body {
   font-family: "Roboto", sans-serif;
   background: darken(white, 0.2);
+  position: absolute;
+}
+
+input {
+    font-size: 1.5em;
+    border-radius: .25em;
+    height: 30px;
+    width: 400px;
+  }
+
+.editing-input  {
+  border-radius: 4px;
+  width: 190px;
+}
+
+.note {
+  border: 1px 5px 3px;
+  border-style: solid;
+  border-color: black;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+}
+
+.note-area  {
+  display: flex;
+  max-width: 40px;
+}
+
+.noteBody  {
+  border: 1px 3px 1px;
+  border-style: solid;
+  border-color: rgb(118, 113, 131);
+  max-width: 20px;
+}
+
+.delete {
+  border-radius: 5px;
+}
+
+.top-row  {
+  display: flex;
+  justify-content: space-around;
+}
+
+.fa {
+  padding: 2px;
+  cursor: pointer;
 }
