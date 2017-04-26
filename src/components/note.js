@@ -18,14 +18,10 @@ class Note extends Component {
   }
 
   onDeleteClick(event) {
-    console.log(this.props.id);
     this.props.deleteNote(this.props.id);
   }
 
   onDrag(event, position) {
-    console.log(position.x);
-    console.log(position.y);
-
     if (position.y > -50 && position.x > 0) {
       this.props.update(this.props.id, { x: position.x, y: position.y });
     }
