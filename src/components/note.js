@@ -13,24 +13,34 @@ class Note extends Component {
     this.onDrag = this.onDrag.bind(this);
     this.onEditOrSaveClick = this.onEditOrSaveClick.bind(this);
     this.renderNoteContent = this.renderNoteContent.bind(this);
+    this.onTitleChange = this.onTitleChange.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
 
   onDeleteClick(event) {
-    this.props.deleteNote(this.props.note.id);
+    console.log(this.props.id);
+    this.props.deleteNote(this.props.id);
   }
 
   onDrag(event, position) {
-    console.log('test');
-    this.props.update(this.props.note.id, { x: position.x, y: position.y });
+    console.log(position.x);
+    console.log(position.y);
+
+    if (position.y > -50 && position.x > 0) {
+      this.props.update(this.props.id, { x: position.x, y: position.y });
+    }
   }
 
   onEditOrSaveClick(event) {
     this.setState({ isEditing: !this.state.isEditing });
   }
 
+  onTitleChange(event) {
+    this.props.update(this.props.id, { title: event.target.value });
+  }
+
   onInputChange(event) {
-    this.props.update(this.props.note.id, { text: event.target.value });
+    this.props.update(this.props.id, { text: event.target.value });
   }
 
   renderNoteContent() {
@@ -44,8 +54,12 @@ class Note extends Component {
       >
         <div className="note">
           <div className="top-row">
-            {this.props.note.title}
-            <div className="button-row">
+            <div className="top-row-right">
+              { this.state.isEditing ?
+                <input onChange={this.onTitleChange} className="editing-title" value={this.props.note.title} /> :
+                <span className="note-title">
+                  {this.props.note.title}
+                </span>}
               <i onClick={this.onDeleteClick} className="fa fa-trash-o" />
               { this.state.isEditing ?
                 <i
@@ -58,12 +72,15 @@ class Note extends Component {
                   className="fa fa-pencil"
                 />
               }
+            </div>
+
+            <div className="top-row-left">
               <i onDrag={this.onDrag} className="fa fa-arrows-alt" />
             </div>
           </div>
           { this.state.isEditing ?
             <textarea onChange={this.onInputChange} className="editing-input" value={this.props.note.text} /> :
-            <div className="note-area"><NoteContent note={this.props.note} /></div>}
+            <NoteContent note={this.props.note} />}
         </div>
       </Draggable>
     );

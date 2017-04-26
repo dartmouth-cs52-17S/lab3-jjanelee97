@@ -3,7 +3,7 @@ import marked from 'marked';
 
 const NoteContent = (props) => {
   return (
-    <div className="noteBody" dangerouslySetInnerHTML={{ __html: marked(props.note.text || '') }} />
+    <div className="note-body" dangerouslySetInnerHTML={{ __html: marked(props.note.text || '') }} />
   );
 };
 export default NoteContent;

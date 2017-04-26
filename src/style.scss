@@ -2,39 +2,54 @@ body {
   font-family: "Roboto", sans-serif;
   background: darken(white, 0.2);
   position: absolute;
+  background-color: rgb(17, 221, 190);
 }
 
 input {
+    margin: 13px;
     font-size: 1.5em;
-    border-radius: .25em;
+    border-radius: 7px;
     height: 30px;
     width: 400px;
   }
 
+.editing-title  {
+  font-size: 0.75em;
+  border-radius: 4px;
+  height: 20px;
+  width: 120px;
+  margin: 0;
+}
+
 .editing-input  {
   border-radius: 4px;
-  width: 190px;
+  min-width: 180px;
+  min-height: 170px;
+  padding: 10px;
+  margin: 10px;
+  margin-top: 5px;
 }
 
 .note {
   border: 1px 5px 3px;
   border-style: solid;
   border-color: black;
-  width: 200px;
-  height: 200px;
+  min-width: 200px;
+  min-height: 200px;
   position: absolute;
+  background-color: rgb(187, 76, 130);
 }
 
-.note-area  {
-  display: flex;
-  max-width: 40px;
-}
-
-.noteBody  {
+.note-body  {
   border: 1px 3px 1px;
   border-style: solid;
-  border-color: rgb(118, 113, 131);
-  max-width: 20px;
+  min-height: 180px;
+  border-color: rgb(255, 255, 255);
+  min-width: 200px;
+  overflow: hidden;
+  margin: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .delete {
@@ -43,7 +58,26 @@ input {
 
 .top-row  {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+}
+
+#input-bar  {
+  display: flex;
+  align-items: center;
+}
+
+.title-submit {
+  border-radius: 4px;
+  background: rgb(77, 140, 186);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font: inherit;
+  margin: 3px;
+  outline: 0;
+  padding: 3px 6px;
+  transition: all .1s linear;
 }
 
 .fa {

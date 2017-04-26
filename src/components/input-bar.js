@@ -24,8 +24,8 @@ class InputBar extends Component {
   render() {
     return (
       <div id="input-bar">
-        <input placeholder="Type Here" onChange={this.onInputChange} value={this.state.newtitle} />
-        <button onClick={this.handleSubmit}> Submit </button>
+        <input placeholder="Note Title" onChange={this.onInputChange} value={this.state.newtitle} />
+        <button className="title-submit" onClick={this.handleSubmit}> Submit </button>
       </div>
     );
   }

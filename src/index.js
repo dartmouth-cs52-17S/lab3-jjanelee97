@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 import ReactDOM from 'react-dom';
 import InputBar from './components/input-bar';
 import Note from './components/note';
+import * as firebasedb from './firebasedb';
 import './style.scss';
 
 
@@ -18,23 +19,22 @@ class App extends Component {
     this.update = this.update.bind(this);
   }
 
-  addNote(text) {
-    this.setState({
-      notes: this.state.notes.set(this.state.idcount, { id: this.state.idcount, title: text, text: '', x: 30, y: 30 }),
-      idcount: this.state.idcount + 1,
+  componentDidMount() {
+    firebasedb.fetchNotes((notes) => {
+      this.setState({ notes: Immutable.Map(notes) });
     });
+  }
+
+  addNote(text) {
+    firebasedb.addNote(text);
   }
 
   deleteNote(id) {
-    this.setState({
-      notes: this.state.notes.delete(id),
-    });
+    firebasedb.deleteNote(id);
   }
 
   update(id, fields) {
-    this.setState({
-      notes: this.state.notes.update(id, (note) => { return Object.assign({}, note, fields); }),
-    });
+    firebasedb.update(id, Object.assign({}, this.state.notes.get(id), fields));
   }
 
   render() {
