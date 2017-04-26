@@ -1,5 +1,6 @@
 # Collaborative Notes App made from React
-Made by Jane Lee
+
+Made by Jane Lee
 
 CS52 - Tim Tregubov
 
