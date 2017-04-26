@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class InputBar extends Component {
   constructor(props) {
     super(props);
